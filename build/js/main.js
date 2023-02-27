@@ -78,7 +78,7 @@ const personIsPremium = (personObj) => {
     result = personObj.name + personObj.premeum;
     return result;
 };
-/* ------------------- 6. Data Types ------------------- */
+/* ------------------- 6. Enum ------------------- */
 var Alphabet;
 (function (Alphabet) {
     Alphabet[Alphabet["A"] = 1] = "A";
