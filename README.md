@@ -1,4 +1,4 @@
-/* ------------------- 1. Data Types ------------------- */
+`/* ------------------- 1. Data Types ------------------- */
 
 let _id; // Implicit Declearation
 let fb_id: any; // Explicit Declearation
@@ -19,7 +19,7 @@ device = 4323523;
 
 const re: RegExp = /\w+/g;
 
-
+<hr>
 /* ------------------- 2. Function ------------------- */
 
 
@@ -37,7 +37,7 @@ const sum = (
   return result;
 };
 
-
+<hr>
 /* ------------------- 3. Array ------------------- */
 
 const anyTypeString = [];
@@ -53,7 +53,7 @@ const strAndNum2: (string | number)[] = ["Hi", 143];
 
 const mixedData = ["bye", true, 77];
 const mixedData2: (string | boolean | number)[] = ["bye", true, 77];
-
+<hr>
 /* ------------------- 4. Tuple ------------------- */
 
 const myTuple: [string, number, boolean] = ["hello", 143, false];
@@ -65,7 +65,7 @@ myTuple[1] = 777;
 anArr = myTuple;
 // X - myTuple = Array
 
-
+<hr>
 /* ------------------- 5. Object & Type & Interface ------------------- */
 
 let myObj = {};
@@ -109,7 +109,7 @@ let sadik: Person = {
 
 /* type/interface in Function */
 const greetPerson = (personObj: Person): string => {
-  return `Hello ${personObj.name}`;
+  return 'Hello' + personObj.name;
 };
 
 const personIsPremium = (personObj: Person): string => {
@@ -123,7 +123,7 @@ const personIsPremium = (personObj: Person): string => {
   return result;
 };
 
-
+<hr>
 /* ------------------- 6. Enum ------------------- */
 
 enum Alphabet {
