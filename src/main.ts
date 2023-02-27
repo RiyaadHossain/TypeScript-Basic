@@ -88,7 +88,7 @@ type Person = {
 };
 
 /* 
-We also can use 'interface' instead of 'type'. Syntax: interface Person {} interface is more preferrable on class. 
+We also can use 'interface' instead of 'type'. Syntax: interface Person {} interface is more preferrable on object & class. 
 */
 
 let jobayer: Person = {
@@ -133,3 +133,22 @@ console.log(Alphabet.C); // 0
 
 // If assigned the first value
 console.log(Alphabet.C); // 3
+
+/* ------------------- 7. Alias & Literal Types ------------------- */
+// 7.1 Type Alias
+type numberOrString = number | string
+type stringOrNumArr = (string | number)[]
+
+let job_id: numberOrString
+
+type Programmer = {
+  name: string;
+  age: number;
+  devices: stringOrNumArr; // Can be used in another alias
+};
+
+
+// 7.2 Literal Type
+let myName: 'Riyad'
+let userName: 'Riyad' | 'Jobayer' | 'Sadik' | 'Al-amin'
+userName = "Jobayer"
