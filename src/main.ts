@@ -210,6 +210,10 @@ const addOrConcat = (a: number, b: number, c: 'add' | 'concat'): number | string
 const img = document.querySelector('img')!
 const myImg = document.getElementById('#img') as HTMLImageElement
 const nextImg = <HTMLImageElement>document.getElementById('#img')
-
 img.src
 myImg.src
+
+const year = document.getElementById("year") as HTMLSpanElement
+const thisYear: string = new Date().getFullYear().toString()
+year.setAttribute("datetime", thisYear)
+year.textContent = thisYear
