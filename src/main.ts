@@ -19,13 +19,13 @@ device = 4323523;
 
 const re: RegExp = /\w+/g;
 
-
 /* ------------------- 2. Function ------------------- */
+// 2.1 Optionl & Default param
 const sum = (
   a: number,
   b: number,
-  c?: string,
-  d: number = 0
+  c?: string, // Optional param
+  d: number = 0 // Default param
 ): number | string => {
   let result: string | number;
   result = a + b + d;
@@ -35,6 +35,45 @@ const sum = (
   return result;
 };
 
+// 2.2 Function Signature
+type mathFunc = (a: number, b: number) => number;
+
+const multiply: mathFunc = (num1, num2) => {
+  return num1 * num2;
+};
+
+const subtract = (num1: number = 10, num2?: number) => {
+  if (typeof num2 !== "undefined") {
+    return num1 - num2;
+  }
+  return num1;
+};
+
+subtract(undefined, 5); // To avoid sending param use undefined
+
+// 2.3 Rest param
+const sumAll = (a: number, ...numbers: number[]): number => {
+  return a + numbers.reduce((prev, curr) => prev + curr);
+};
+
+// 2.4 'never' return type
+const errorMsg = (msg: string): never => {
+  // By default return type is - never
+  throw new Error(msg);
+};
+
+// 2.5 Custom type guard
+const isNumber = (a: any): boolean => {
+  return typeof a === "number" ? true : false;
+};
+
+// 2.6 Usage of 'never' return type
+const showStr = (a: number | string): string => {
+  if (typeof a === "number") return "Number";
+  if (typeof a === "string") return "String";
+  return errorMsg("This should not happen");
+  // 'never' return type preventing to compile error as this func return type is 'string'
+};
 
 /* ------------------- 3. Array ------------------- */
 const anyTypeString = [];
@@ -60,7 +99,6 @@ myTuple[1] = 777;
 
 anArr = myTuple;
 // X - myTuple = Array
-
 
 /* ------------------- 5. Object & Type & Interface ------------------- */
 let myObj = {};
@@ -118,7 +156,6 @@ const personIsPremium = (personObj: Person): string => {
   return result;
 };
 
-
 /* ------------------- 6. Enum ------------------- */
 enum Alphabet {
   A = 1,
@@ -136,10 +173,10 @@ console.log(Alphabet.C); // 3
 
 /* ------------------- 7. Alias & Literal Types ------------------- */
 // 7.1 Type Alias
-type numberOrString = number | string
-type stringOrNumArr = (string | number)[]
+type numberOrString = number | string;
+type stringOrNumArr = (string | number)[];
 
-let job_id: numberOrString
+let job_id: numberOrString;
 
 type Programmer = {
   name: string;
@@ -147,8 +184,7 @@ type Programmer = {
   devices: stringOrNumArr; // Can be used in another alias
 };
 
-
 // 7.2 Literal Type
-let myName: 'Riyad'
-let userName: 'Riyad' | 'Jobayer' | 'Sadik' | 'Al-amin'
-userName = "Jobayer"
+let myName: "Riyad";
+let userName: "Riyad" | "Jobayer" | "Sadik" | "Al-amin";
+userName = "Jobayer";
