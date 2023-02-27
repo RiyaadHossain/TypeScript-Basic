@@ -15,8 +15,13 @@ device = "Mobile";
 device = 4323523;
 const re = /\w+/g;
 /* ------------------- 2. Function ------------------- */
-const sum = (a, b) => {
-    return a + b;
+const sum = (a, b, c, d = 0) => {
+    let result;
+    result = a + b + d + '';
+    if (c) {
+        result = a + b + c;
+    }
+    return result;
 };
 /* ------------------- 3. Array ------------------- */
 const anyTypeString = [];
@@ -30,9 +35,25 @@ const strAndNum2 = ["Hi", 143];
 const mixedData = ["bye", true, 77];
 const mixedData2 = ["bye", true, 77];
 /* ------------------- 4. Tuple ------------------- */
-const myTuple = ['hello', 143, false];
+const myTuple = ["hello", 143, false];
 // X - const myTuple: [string, number, boolean, number] = ['hello', 143, false]
-let anArr = ['hello1', 234, true];
+let anArr = ["hello1", 234, true];
 myTuple[1] = 777;
 anArr = myTuple;
 // X - myTuple = Array
+/* ------------------- 5. Object ------------------- */
+let myObj = {};
+myObj = anArr;
+myObj = {
+    name: "Riyad",
+    age: 22,
+};
+const alAmin = {
+    name: 'Jobayer', age: 26, premeum: true
+};
+let jobayer = {
+    name: 'Jobayer', age: 26, premeum: true
+};
+let sadik = {
+    name: 'Sadik', age: 24
+};

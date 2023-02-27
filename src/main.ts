@@ -20,8 +20,13 @@ device = 4323523;
 const re: RegExp = /\w+/g;
 
 /* ------------------- 2. Function ------------------- */
-const sum = (a: number, b: number): number => {
-  return a + b;
+const sum = (a: number, b: number, c?: string, d: number = 0): string => {
+    let result: string;
+    result = a + b + d + ''
+    if (c) {
+        result = a + b + c
+    }
+  return result;
 };
 
 /* ------------------- 3. Array ------------------- */
@@ -39,13 +44,43 @@ const strAndNum2: (string | number)[] = ["Hi", 143];
 const mixedData = ["bye", true, 77];
 const mixedData2: (string | boolean | number)[] = ["bye", true, 77];
 
-
 /* ------------------- 4. Tuple ------------------- */
-const myTuple: [string, number, boolean] = ['hello', 143, false]
+const myTuple: [string, number, boolean] = ["hello", 143, false];
 // X - const myTuple: [string, number, boolean, number] = ['hello', 143, false]
-let anArr = ['hello1', 234, true]
+let anArr = ["hello1", 234, true];
 
-myTuple[1] = 777
+myTuple[1] = 777;
 
-anArr = myTuple
+anArr = myTuple;
 // X - myTuple = Array
+
+/* ------------------- 5. Object ------------------- */
+let myObj = {};
+myObj = anArr;
+
+myObj = {
+  name: "Riyad",
+  age: 22,
+};
+
+const alAmin:{
+    name: string
+    age: number
+    premeum?: boolean
+} = {
+    name: 'Jobayer', age: 26, premeum: true
+}
+
+type Person = {
+    name: string
+    age: number
+    premeum?: boolean
+}
+
+let jobayer: Person = {
+    name: 'Jobayer', age: 26, premeum: true
+}
+
+let sadik: Person = {
+    name: 'Sadik', age: 24
+}
