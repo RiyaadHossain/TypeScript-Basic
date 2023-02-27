@@ -188,3 +188,28 @@ type Programmer = {
 let myName: "Riyad";
 let userName: "Riyad" | "Jobayer" | "Sadik" | "Al-amin";
 userName = "Jobayer";
+
+/* ------------------- 8. Type Assertion ------------------- */
+type strType = string
+type strOrNum = string | number
+type tsType = 'TypeScript'
+
+let ts: strType = 'TypeScript'
+let ts2 = ts as strType // less specific
+let typeScript = ts as tsType // more specific
+
+let myStr = <strType>'Riyad'
+let myStr2 = <number | string>'Riyad'
+
+const addOrConcat = (a: number, b: number, c: 'add' | 'concat'): number | string => {
+  if (c === 'add') return a + b
+  return '' + a + b
+}
+
+// The DOM 
+const img = document.querySelector('img')!
+const myImg = document.getElementById('#img') as HTMLImageElement
+const nextImg = <HTMLImageElement>document.getElementById('#img')
+
+img.src
+myImg.src
