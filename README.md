@@ -21,6 +21,8 @@ const re: RegExp = /\w+/g;
 
 
 /* ------------------- 2. Function ------------------- */
+
+
 const sum = (
   a: number,
   b: number,
@@ -37,6 +39,7 @@ const sum = (
 
 
 /* ------------------- 3. Array ------------------- */
+
 const anyTypeString = [];
 const anyTypeString2: any[] = [];
 
@@ -52,6 +55,7 @@ const mixedData = ["bye", true, 77];
 const mixedData2: (string | boolean | number)[] = ["bye", true, 77];
 
 /* ------------------- 4. Tuple ------------------- */
+
 const myTuple: [string, number, boolean] = ["hello", 143, false];
 // X - const myTuple: [string, number, boolean, number] = ['hello', 143, false]
 let anArr = ["hello1", 234, true];
@@ -63,6 +67,7 @@ anArr = myTuple;
 
 
 /* ------------------- 5. Object & Type & Interface ------------------- */
+
 let myObj = {};
 myObj = anArr;
 
@@ -120,6 +125,7 @@ const personIsPremium = (personObj: Person): string => {
 
 
 /* ------------------- 6. Enum ------------------- */
+
 enum Alphabet {
   A = 1,
   B,
