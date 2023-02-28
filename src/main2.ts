@@ -99,25 +99,97 @@ console.log(Amy.id); // 3
 console.log(People.count); // 3
 
 // 9.6 Setter & Getter___________
-class School{
-    private students: string[]
-    constructor() {
-        this.students = []
-    }
+class School {
+  private students: string[];
+  constructor() {
+    this.students = [];
+  }
 
-    public get student(): string[] {
-        return this.students
-    }
+  public get student(): string[] {
+    return this.students;
+  }
 
-    public set student(data: string[]) {
-        this.students = data
-    }
+  public set student(data: string[]) {
+    this.students = data;
+  }
 }
 
+const MySchool = new School();
+MySchool.student = ["Neil Young", "Led Zep"];
+console.log(MySchool.student);
+MySchool.student = [...MySchool.student, "ZZ Top"];
+console.log(MySchool.student);
+// MySchool.student = ['Van Halen', 5150] - must be string data
 
-const MySchool = new School()
-MySchool.student = ['Neil Young', 'Led Zep']
-console.log(MySchool.student)
-MySchool.student = [...MySchool.student, 'ZZ Top']
-console.log(MySchool.student)
-// MySchool.student = ['Van Halen', 5150]- must be string data
+/* ------------------- 10. Index Signature, typeof Assertion & Record utility ------------------- */
+
+// 10.1 Index Signature & keyof Assertion
+interface income {
+  salary: number;
+  sidehustle: number;
+  passiveIncome: number;
+}
+
+const riyadIncome: income = {
+  salary: 2000,
+  sidehustle: 100,
+  passiveIncome: 50,
+};
+
+const prop: string = "salary";
+// console.log(riyadIncome[prop]) - Error
+
+for (const key in riyadIncome) {
+  console.log(`${key}: ${riyadIncome[key as keyof income]}`); // keyof Assertion (1st way)
+}
+
+Object.keys(riyadIncome).map((key) => {
+  console.log(riyadIncome[key as keyof typeof riyadIncome]); // keyof Assertions (2nd way)
+});
+
+interface income2 {
+  [index: string]: number; // To access dynamically
+  salary: number;
+  sidehustle: number;
+  passiveIncome: number;
+}
+
+const riyadIncome2: income2 = {
+  salary: 2000,
+  sidehustle: 100,
+  passiveIncome: 50,
+};
+
+const prop2: string = "salary";
+console.log(riyadIncome2[prop2]);
+console.log(riyadIncome2["hello"]); // Undefined
+
+// 10.2 Record
+
+// interface Incomes {
+//     [key: string]: number
+// }
+
+type Streams = "salary" | "bonus" | "sidehustle";
+
+type Incomes = Record<Streams, number>;
+/* Similar to-
+type Incomes = {
+    salary: number;
+    sidehustle: number;
+    bonus: number;
+} */
+
+const monthlyIncomes: Incomes = {
+  salary: 500,
+  bonus: 100,
+  sidehustle: 250,
+};
+
+const prop3: string = 'bonus'
+console.log(monthlyIncomes['bonus'])
+// console.log(monthlyIncomes[prop3]) Can't do that
+
+for (const revenue in monthlyIncomes) {
+  console.log(monthlyIncomes[revenue as keyof Incomes]);
+}
