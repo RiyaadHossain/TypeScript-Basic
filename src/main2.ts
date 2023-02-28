@@ -31,7 +31,7 @@ console.log(Riyad.getOccupation());
 // console.log(Riyad.occupation) - Property 'occupation' is private and only accessible within class 'Individual'
 // console.log(Riyad.exp) - Property 'exp' is protected and only accessible within class 'Individual' and its subclasses
 
-// 9.2 Subclass_________ 
+// 9.2 Subclass_________
 class Engineer extends Individual {
   constructor(
     name: string,
@@ -71,6 +71,53 @@ class Cricketer implements Player {
   }
 }
 
-const Mashrafee = new Cricketer("Mashrafee", 32)
-console.log(Mashrafee.play("bowling")) // Mashrafee is bowling
+const Mashrafee = new Cricketer("Mashrafee", 32);
+console.log(Mashrafee.play("bowling")); // Mashrafee is bowling
 
+// 9.5 Static____________
+class People {
+  static count: number = 0;
+  static getCount(): number {
+    return People.count;
+  }
+
+  public id: number;
+
+  constructor(public name: string) {
+    this.name = name;
+    this.id = ++People.count; // accessable because of static type
+  }
+}
+
+const John = new People("John");
+const Steve = new People("Steve");
+const Amy = new People("Amy");
+
+console.log(John.id); // 1
+console.log(Steve.id); // 2
+console.log(Amy.id); // 3
+console.log(People.count); // 3
+
+// 9.6 Setter & Getter___________
+class School{
+    private students: string[]
+    constructor() {
+        this.students = []
+    }
+
+    public get student(): string[] {
+        return this.students
+    }
+
+    public set student(data: string[]) {
+        this.students = data
+    }
+}
+
+
+const MySchool = new School()
+MySchool.student = ['Neil Young', 'Led Zep']
+console.log(MySchool.student)
+MySchool.student = [...MySchool.student, 'ZZ Top']
+console.log(MySchool.student)
+// MySchool.student = ['Van Halen', 5150]- must be string data
