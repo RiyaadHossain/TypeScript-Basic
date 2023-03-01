@@ -1,3 +1,4 @@
+```
 /* ------------------- 1. Data Types ------------------- */
 
 let _id; // Implicit Declearation
@@ -167,3 +168,4 @@ console.log(Alphabet.C); // 0
 // If assigned the first value
 
 console.log(Alphabet.C); // 3
+```
