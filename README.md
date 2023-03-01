@@ -3,9 +3,19 @@
 # TypeScirpt 
 > TypeScript is a free and open source high-level programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JavaScript.
 
+##### Table of Context
 1. [Data Types](#1-data-types)
-2. James Monroe
-3. John Quincy Adams
+2. [Function](#2-function)
+3. [Array](#3-array)
+4. [Tuple](#4-tuple)
+5. [Object & Type & Interface](#5-object--type--interface)
+6. [Enum](#6-enum)
+7. [Alias & Literal Types](#7-alias--literal-types)
+8. [Type Assertion](#8-type-assertion)
+9. [TS Classes ](#9-ts-classes)
+10. [Index Signature, typeof Assertion & Record utility ](#10-index-signature-typeof-assertion--record-utility)
+11. [TS Generics ](#11-ts-generics)
+12. [Utility](#12-utility)
 
 ### 1. Data Types 
 ```
@@ -553,7 +563,7 @@ myCountry.data = 42;
 console.log(myCountry.data);
 ```
 
-### 12. Utility ------------------- */
+### 12. Utility 
 ```
 // 12.1 Partial
 interface student {
