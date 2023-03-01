@@ -1,6 +1,6 @@
-```
-/* ------------------- 1. Data Types ------------------- */
 
+## Data Types
+```
 let _id; // Implicit Declearation
 
 let fb_id: any; // Explicit Declearation
@@ -32,9 +32,11 @@ device = 4323523;
 const re: RegExp = /\w+/g;
 
 <hr>
+```
+
 /* ------------------- 2. Function ------------------- */
 
-
+```
 const sum = (
   a: number,
   b: number,
@@ -114,8 +116,8 @@ type Person = {
   premeum?: boolean;
 };
 
-/* 
-We also can use 'interface' instead of 'type'. Syntax: interface Person {} interface is more preferrable on class. 
+/*
+We also can use 'interface' instead of 'type'. Syntax: interface Person {} interface is more preferrable on class.
 */
 
 let jobayer: Person = {
@@ -136,18 +138,18 @@ const greetPerson = (personObj: Person): string => {
 };
 
 const personIsPremium = (personObj: Person): string => {
-    
+
   let result: string;
-  
-  /*  
-    X - result = personObj.premeum.toString() 
-    'personObj.premeum' is possibly 'undefined' 
+
+  /*
+    X - result = personObj.premeum.toString()
+    'personObj.premeum' is possibly 'undefined'
   */
 
   result = personObj.name + personObj.premeum;
-  
+
   return result;
-  
+
 };
 
 <hr>
