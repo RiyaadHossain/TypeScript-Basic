@@ -217,6 +217,9 @@ const myObj2 = <T extends HasID>(arg: T): T => {
   return arg;
 };
 
+// console.log(myObj2({ name: "Riyad" })) - Have to provide id property as extending from HasID
+console.log(myObj2({ id: 23, name: "Riyad" }));
+
 // 10.2 Advance Usage
 const getUserProp = <T extends HasID, K extends keyof T>(
   users: T[],
@@ -301,3 +304,4 @@ Bangladesh.data = "USA";
 const myCountry = new Country<string | number>("Canada");
 myCountry.data = 42;
 console.log(myCountry.data);
+
