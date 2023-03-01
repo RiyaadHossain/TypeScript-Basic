@@ -672,3 +672,6 @@ type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>
 
 fetchUsers().then(users => console.log(users))
 ```
+## Feedback
+
+If you have any feedback, please reach out to us at riyadhossain.dev@gmail.com
