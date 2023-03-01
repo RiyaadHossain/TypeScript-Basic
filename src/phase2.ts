@@ -123,7 +123,7 @@ console.log(MySchool.student);
 
 /* ------------------- 10. Index Signature, typeof Assertion & Record utility ------------------- */
 
-// 10.1 Index Signature & keyof Assertion
+// 10.1 Index Signature & keyof Assertion______________
 interface income {
   salary: number;
   sidehustle: number;
@@ -141,6 +141,10 @@ const prop: string = "salary";
 
 for (const key in riyadIncome) {
   console.log(`${key}: ${riyadIncome[key as keyof income]}`); // keyof Assertion (1st way)
+}
+
+const getValue = (obj: income, key: keyof income) => {
+  console.log(`${key}: ${obj[key]}`)
 }
 
 Object.keys(riyadIncome).map((key) => {
@@ -164,7 +168,7 @@ const prop2: string = "salary";
 console.log(riyadIncome2[prop2]);
 console.log(riyadIncome2["hello"]); // Undefined
 
-// 10.2 Record
+// 10.2 Record______________
 
 // interface Incomes {
 //     [key: string]: number
@@ -193,3 +197,6 @@ console.log(monthlyIncomes['bonus'])
 for (const revenue in monthlyIncomes) {
   console.log(monthlyIncomes[revenue as keyof Incomes]);
 }
+
+
+/* ------------------- 10. TS Generics ------------------- */
