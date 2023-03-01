@@ -3,7 +3,7 @@
 # TypeScirpt 
 > TypeScript is a free and open source high-level programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JavaScript.
 
-##### Table of Context
+## Table of Context
 1. [Data Types](#1-data-types)
 2. [Function](#2-function)
 3. [Array](#3-array)
