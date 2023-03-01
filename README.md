@@ -1,5 +1,5 @@
 
-### Data Types 
+### 1. Data Types 
 ```
 let _id; // Implicit Declearation
 let fb_id: any; // Explicit Declearation
@@ -21,7 +21,7 @@ device = 4323523;
 const re: RegExp = /\w+/g;
 ```
 
-### Function
+### 2. Function
 ```
 // 2.1 Optionl & Default param
 const sum = (
@@ -77,8 +77,10 @@ const showStr = (a: number | string): string => {
   return errorMsg("This should not happen");
   // 'never' return type preventing to compile error as this func return type is 'string'
 };
+```
 
-/* ------------------- 3. Array ------------------- */
+### 3. Array
+```
 const anyTypeString = [];
 const anyTypeString2: any[] = [];
 
@@ -92,8 +94,10 @@ const strAndNum2: (string | number)[] = ["Hi", 143];
 
 const mixedData = ["bye", true, 77];
 const mixedData2: (string | boolean | number)[] = ["bye", true, 77];
+```
 
-/* ------------------- 4. Tuple ------------------- */
+### 4. Tuple
+```
 const myTuple: [string, number, boolean] = ["hello", 143, false];
 // X - const myTuple: [string, number, boolean, number] = ['hello', 143, false]
 let anArr = ["hello1", 234, true];
@@ -102,8 +106,10 @@ myTuple[1] = 777;
 
 anArr = myTuple;
 // X - myTuple = Array
+```
 
-/* ------------------- 5. Object & Type & Interface ------------------- */
+### 5. Object & Type & Interface
+```
 let myObj = {};
 myObj = anArr;
 
@@ -158,8 +164,10 @@ const personIsPremium = (personObj: Person): string => {
   result = personObj.name + personObj.premeum;
   return result;
 };
+```
 
-/* ------------------- 6. Enum ------------------- */
+### 6. Enum
+```
 enum Alphabet {
   A = 1,
   B,
@@ -173,8 +181,10 @@ console.log(Alphabet.C); // 0
 
 // If assigned the first value
 console.log(Alphabet.C); // 3
+```
 
-/* ------------------- 7. Alias & Literal Types ------------------- */
+### 7. Alias & Literal Types
+```
 // 7.1 Type Alias
 type numberOrString = number | string;
 type stringOrNumArr = (string | number)[];
@@ -191,8 +201,10 @@ type Programmer = {
 let myName: "Riyad";
 let userName: "Riyad" | "Jobayer" | "Sadik" | "Al-amin";
 userName = "Jobayer";
+```
 
-/* ------------------- 8. Type Assertion ------------------- */
+### 8. Type Assertion
+```
 type strType = string
 type strOrNum = string | number
 type tsType = 'TypeScript'
@@ -221,5 +233,4 @@ const year = document.getElementById("year") as HTMLSpanElement
 const thisYear: string = new Date().getFullYear().toString()
 year.setAttribute("datetime", thisYear)
 year.textContent = thisYear
-
 ```
