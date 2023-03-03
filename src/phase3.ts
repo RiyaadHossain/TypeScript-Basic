@@ -27,11 +27,13 @@ const storeStudent = (student: Required<student>): student => {
   return student;
 };
 
-const jkInfo: student = {
+const jkInfo: Readonly<student> = {
   name: "Sadik",
   roll: 22,
   age: 24,
 };
+
+// jkInfo.age = 23 -> Cannot assign to 'age' because it is a read-only property.
 
 const jk: Readonly<student> = storeStudent({ ...jkInfo, dept: "CSE" }); // For Required- have to pass optional prop
 const jkAge = jk.age;
@@ -68,7 +70,7 @@ type age = Extract<Power, "age" | "dept">
 type AllPossibleGrades = 'Dave' | 'John' | null | undefined
 type NamesOnly = NonNullable<AllPossibleGrades>
 
-// 11.7 ReturnType
+// 11.7 ReturnType (In some cases, we may need the exact type as a function's return have)
 const createNewAssign = (title: string, points: number) => {
     return { title, points }
 }
@@ -77,7 +79,7 @@ type NewAssign = ReturnType<typeof createNewAssign> // can define types with the
 
 const tsAssign: NewAssign = createNewAssign("Utility Types", 100)
 
-// 11.8 Parameters
+// 11.8 Parameters (In some cases, we may need the exact type as a function's parameter have)
 type paramType = Parameters<typeof createNewAssign> // type paramType = [title: string, points: number]
 
 const assignArgs: paramType = ["Generics", 100]

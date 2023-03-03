@@ -110,7 +110,7 @@ myObj = {
 };
 
 const alAmin: {
-  name: string;
+  readonly name: string;
   age: number;
   premeum?: boolean;
 } = {
@@ -121,12 +121,12 @@ const alAmin: {
 
 type Person = {
   name: string;
-  age: number;
+  readonly age: number;
   premeum?: boolean;
 };
 
 /* 
-We also can use 'interface' instead of 'type'. Syntax: interface Person {} interface is more preferrable on object & class. 
+We also can use 'interface' instead of 'type'. Syntax: interface Person {}. Note: interface is more preferrable on object & class. 
 */
 
 let jobayer: Person = {
@@ -140,7 +140,7 @@ let sadik: Person = {
   age: 24,
 };
 
-/* type/interface in Function */
+// type/interface in Function
 const greetPerson = (personObj: Person): string => {
   return `Hello ${personObj.name}`;
 };
@@ -213,8 +213,10 @@ const myImg = document.getElementById('#img') as HTMLImageElement
 const nextImg = <HTMLImageElement>document.getElementById('#img')
 img.src
 myImg.src
+nextImg.src
 
 const year = document.getElementById("year") as HTMLSpanElement
 const thisYear: string = new Date().getFullYear().toString()
 year.setAttribute("datetime", thisYear)
 year.textContent = thisYear
+

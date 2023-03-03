@@ -28,8 +28,8 @@ class Individual {
 const Riyad = new Individual("Riyad", 22, 2, "St Engineer");
 console.log(Riyad.name);
 console.log(Riyad.getOccupation());
-// console.log(Riyad.occupation) - Property 'occupation' is private and only accessible within class 'Individual'
 // console.log(Riyad.exp) - Property 'exp' is protected and only accessible within class 'Individual' and its subclasses
+// console.log(Riyad.occupation) - Property 'occupation' is private and only accessible within class 'Individual'
 
 // 9.2 Subclass_________
 class Engineer extends Individual {
@@ -122,7 +122,6 @@ console.log(MySchool.student);
 // MySchool.student = ['Van Halen', 5150] - must be string data
 
 /* ------------------- 10. Index Signature, typeof Assertion & Record utility ------------------- */
-
 // 10.1 Index Signature & keyof Assertion______________
 interface income {
   salary: number;
@@ -143,12 +142,12 @@ for (const key in riyadIncome) {
   console.log(`${key}: ${riyadIncome[key as keyof income]}`); // keyof Assertion (1st way)
 }
 
-const getValue = (obj: income, key: keyof income) => {
+const getValue = (obj: income, key: keyof income) => { // keyof Assertions (2nd way)
   console.log(`${key}: ${obj[key]}`);
 };
 
 Object.keys(riyadIncome).map((key) => {
-  console.log(riyadIncome[key as keyof typeof riyadIncome]); // keyof Assertions (2nd way)
+  console.log(riyadIncome[key as keyof typeof riyadIncome]); // keyof Assertions (3rd way)
 });
 
 interface income2 {
