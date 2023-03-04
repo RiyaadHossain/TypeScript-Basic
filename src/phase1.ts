@@ -95,6 +95,7 @@ const myTuple: [string, number, boolean] = ["hello", 143, false];
 // X - const myTuple: [string, number, boolean, number] = ['hello', 143, false]
 let anArr = ["hello1", 234, true];
 
+// myTuple[0] = 777; - Type 'number' is not assignable to type 'string'
 myTuple[1] = 777;
 
 anArr = myTuple;
@@ -102,7 +103,7 @@ anArr = myTuple;
 
 /* ------------------- 5. Object & Type & Interface ------------------- */
 let myObj = {};
-myObj = anArr;
+myObj = anArr; // Array is also considered as object in JS
 
 myObj = {
   name: "Riyad",
@@ -121,8 +122,8 @@ const alAmin: {
 
 type Person = {
   name: string;
-  readonly age: number;
-  premeum?: boolean;
+  readonly age: number; // Readonly field
+  premeum?: boolean; // Optional field
 };
 
 /* 
@@ -147,10 +148,9 @@ const greetPerson = (personObj: Person): string => {
 
 const personIsPremium = (personObj: Person): string => {
   let result: string;
-  /*  
-    X - result = personObj.premeum.toString() 
-    'personObj.premeum' is possibly 'undefined' 
-  */
+
+  // X - result = personObj.premeum.toString()
+  // 'personObj.premeum' is possibly 'undefined'
 
   result = personObj.name + personObj.premeum;
   return result;
@@ -166,17 +166,26 @@ enum Alphabet {
 }
 
 // If not assigned the first value- enum Alphabet { A , B, C, D, E }
-console.log(Alphabet.C); // 0
+console.log(Alphabet.C); // 2
 
 // If assigned the first value
 console.log(Alphabet.C); // 3
 
+// String Enum
+enum PrintMedia {
+  Newspaper = "NEWSPAPER",
+  Newsletter = "NEWSLETTER",
+  Magazine = "MAGAZINE",
+  Book = "BOOK"
+}
+
 /* ------------------- 7. Alias & Literal Types ------------------- */
 // 7.1 Type Alias
-type numberOrString = number | string;
+type numStr = number | string;
 type stringOrNumArr = (string | number)[];
+type arrayOfPerson = Person[];
 
-let job_id: numberOrString;
+let job_id: numStr;
 
 type Programmer = {
   name: string;
@@ -187,36 +196,61 @@ type Programmer = {
 // 7.2 Literal Type
 let myName: "Riyad";
 let userName: "Riyad" | "Jobayer" | "Sadik" | "Al-amin";
+let superHeros: "Hulk" | "Spider-man" | "Iron-man";
 userName = "Jobayer";
+// superHeros = "Black Widow" - Type '"Black Widow"' is not assignable to type '"Hulk" | "Spider-man" | "Iron-man"'
 
 /* ------------------- 8. Type Assertion ------------------- */
-type strType = string
-type strOrNum = string | number
-type tsType = 'TypeScript'
+/* Type assertion is a technique that informs the compiler about the type of a variable. 
+You can use type assertion to specify a value’s type. When we want to change a variable 
+from one type to another such as any to number etc, we use Type assertion. */
 
-let ts: strType = 'TypeScript'
-let ts2 = ts as strType // less specific
-let typeScript = ts as tsType // more specific
+type strType = string;
+type strOrNum = string | number;
+type tsType = "TypeScript";
 
-let myStr = <strType>'Riyad'
-let myStr2 = <number | string>'Riyad'
+let ts: strType = "TypeScript";
+let ts2 = ts as strType; // let ts2:strType = ts (less specific)
+let typeScript = ts as tsType; // more specific
 
-const addOrConcat = (a: number, b: number, c: 'add' | 'concat'): number | string => {
-  if (c === 'add') return a + b
-  return '' + a + b
+let myStr = <strType>"Riyad";
+let myStr2 = <number | string>"Riyad";
+
+let mobile = {};
+// mobile.model = 'Xaomi' - Property 'model' does not exist on type '{}'
+// mobile.price = 22000 - Property 'price' does not exist on type '{}'
+
+interface Mobile_Info {
+  name: string;
+  price: number;
 }
-let myVal: string = addOrConcat(2, 2, 'concat') as string // To prevent getting error
 
-// The DOM 
-const img = document.querySelector('img')!
-const myImg = document.getElementById('#img') as HTMLImageElement
-const nextImg = <HTMLImageElement>document.getElementById('#img')
-img.src
-myImg.src
-nextImg.src
+let mobile2 = <Mobile_Info>{
+  // Compiler will provide autocomplete properties,
+  // but will not give an error if you forgot to add the properties
+};
 
-const year = document.getElementById("year") as HTMLSpanElement
-const thisYear: string = new Date().getFullYear().toString()
-year.setAttribute("datetime", thisYear)
-year.textContent = thisYear
+const addOrConcat = (
+  a: number,
+  b: number,
+  c: "add" | "concat"
+): number | string => {
+  if (c === "add") return a + b;
+  return "" + a + b;
+};
+let myVal: string = addOrConcat(2, 2, "concat") as string; // To prevent getting error
+let myVal2: string = addOrConcat(2, 2, "add") as string; // still, unpredictable
 
+// The DOM
+const img = document.querySelector("img")!;
+const myImg = document.getElementById("#img") as HTMLImageElement;
+const nextImg = <HTMLImageElement>document.getElementById("#img");
+const para = document.getElementsByTagName('p') // const para: HTMLCollectionOf<HTMLParagraphElement>
+img.src;
+myImg.src;
+nextImg.src;
+
+const year = document.getElementById("year") as HTMLSpanElement;
+const thisYear: string = new Date().getFullYear().toString();
+year.setAttribute("datetime", thisYear);
+year.textContent = thisYear;

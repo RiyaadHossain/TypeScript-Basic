@@ -139,17 +139,18 @@ const prop: string = "salary";
 // console.log(riyadIncome[prop]) - Error
 
 for (const key in riyadIncome) {
-  console.log(`${key}: ${riyadIncome[key as keyof income]}`); // keyof Assertion (1st way)
+  console.log(`${key}: ${riyadIncome[key as keyof income]}`); // keyof Assertion in for loop
 }
 
-const getValue = (obj: income, key: keyof income) => { // keyof Assertions (2nd way)
+const getValue = (obj: income, key: keyof income) => { // keyof Assertions in function
   console.log(`${key}: ${obj[key]}`);
 };
 
 Object.keys(riyadIncome).map((key) => {
-  console.log(riyadIncome[key as keyof typeof riyadIncome]); // keyof Assertions (3rd way)
+  console.log(riyadIncome[key as keyof typeof riyadIncome]); // use typeof when keys are not specified
 });
 
+// Index Signature
 interface income2 {
   [index: string]: number; // To access dynamically
   salary: number;
@@ -191,7 +192,7 @@ const monthlyIncomes: Incomes = {
 
 const prop3: string = "bonus";
 console.log(monthlyIncomes["bonus"]);
-// console.log(monthlyIncomes[prop3]) Can't do that
+// console.log(monthlyIncomes[prop3]) - Can't do that
 
 for (const revenue in monthlyIncomes) {
   console.log(monthlyIncomes[revenue as keyof Incomes]);
@@ -204,8 +205,11 @@ const myFunc = <T>(arg: T): T => {
   return arg;
 };
 
+const funCall = myFunc(true) // Can pass any data type as it's generic
+
 interface ObjInterface<T> {
   value: T;
+  name: string
 }
 
 interface HasID {
@@ -253,6 +257,7 @@ const usersArray = [
   },
   {
     id: 2,
+    isPremeum: true,
     name: "Ervin Howell",
     username: "Antonette",
     email: "Shanna@melissa.tv",
